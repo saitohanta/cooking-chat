@@ -1,0 +1,7 @@
+<%= @post.member.name %>
+<%= @post.created_at.strftime('%Y/%m/%d') %>
+<%= @post.title %>
+<%= image_tag @post.cooking_image, size: "50x50" %>
+<%= @post.body %>
+<%= link_to "編集", edit_post_path %>
+<%= link_to "削除", post_path(@post), method: :delete %>

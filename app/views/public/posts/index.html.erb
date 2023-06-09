@@ -1,0 +1,5 @@
+<% @posts.each do |post| %>
+<%= image_tag post.cooking_image, size: "50x50" %>
+<%= post.title %>
+<%= post.member.name %>
+<% end %>
