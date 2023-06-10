@@ -1,2 +1,5 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<%= image_tag @member.get_profile_image(100,100) %>
+<%= @member.name %>
+<%= @member.email %>
+<%= link_to "編集する", edit_member_path %>
+<%= link_to "投稿履歴", members_path %>

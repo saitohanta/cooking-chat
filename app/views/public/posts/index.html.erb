@@ -1,5 +1,9 @@
 <% @posts.each do |post| %>
+<%= link_to post_path(post.id) do %>
+<% if post.cooking_image.attached? %>
 <%= image_tag post.cooking_image, size: "50x50" %>
+<% end %>
 <%= post.title %>
 <%= post.member.name %>
+<% end %>
 <% end %>

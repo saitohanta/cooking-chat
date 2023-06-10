@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :ensure_member, only: [:edit, :update, :destroy]
+
   def new
     @post = Post.new
   end
@@ -44,6 +46,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:cooking_image, :title, :body)
+  end
+
+  def ensure_member
+    @posts = current_member.posts
+    @post = @posts.find_by(id: params[:id])
+    redirect_to post_path unless @post
   end
 
 end
