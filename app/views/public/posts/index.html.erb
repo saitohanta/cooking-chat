@@ -1,9 +1,11 @@
 <% @posts.each do |post| %>
 <%= link_to post_path(post.id) do %>
-<% if post.cooking_image.attached? %>
-  <%= image_tag post.cooking_image, size: "50x50" %>
+<% if post.post_image.attached? %>
+  <%= image_tag post.post_image, size: "50x50" %>
 <% end %>
 <%= post.title %>
 <%= post.member.name %>
 <% end %>
+❤️<%= post.favorites.count %>いいね
+コメント数<%= post.comments.count %>
 <% end %>

@@ -5,6 +5,10 @@ devise_for :members,skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
+devise_scope :member do
+    post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
 root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
   scope module: :public do

@@ -18,4 +18,11 @@ class Member < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.name = 'Guest'
+    end
+  end
+
 end

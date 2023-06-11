@@ -46,7 +46,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:cooking_image, :title, :body)
+    params.require(:post).permit(:post_image, :title, :body)
   end
 
   def ensure_member

@@ -1,6 +1,6 @@
 <%= form_with model: @post, url: posts_path do |f| %>
 <%= f.label :画像 %>
-<%= f.file_field :cooking_image, accept: "image/*" %>
+<%= f.file_field :post_image, accept: "image/*" %>
 <%= f.label :タイトル %>
 <%= f.text_field :title, placeholder: "タイトル" %>
 <%= f.label :本文 %>
