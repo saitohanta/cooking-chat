@@ -8,11 +8,12 @@ devise_for :members,skip: [:passwords], controllers: {
 root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
   scope module: :public do
-    resources :posts
     resources :members, only:[:index, :show, :edit, :update]
-    resources :favorites, only:[:create, :destroy]
-    resources :comments, only:[:create, :destroy]
     resources :bookmarks, only:[:index, :create, :destroy]
+    resources :posts do
+      resource :favorites, only:[:create, :destroy]
+      resources :comments, only:[:create, :destroy]
+    end
   end
 
 

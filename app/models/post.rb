@@ -7,4 +7,8 @@ class Post < ApplicationRecord
 
   belongs_to :member
 
+  def favorited_by?(member)
+    favorites.exists?(member_id: member.id)
+  end
+
 end
