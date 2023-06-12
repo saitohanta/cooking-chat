@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_08_075758) do
+ActiveRecord::Schema.define(version: 2023_06_12_005320) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -103,6 +103,17 @@ ActiveRecord::Schema.define(version: 2023_06_08_075758) do
     t.index ["member_id"], name: "index_posts_on_member_id"
   end
 
+  create_table "recipes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id", null: false
+    t.string "menu_name", null: false
+    t.string "count", null: false
+    t.text "material", null: false
+    t.text "process", null: false
+    t.index ["member_id"], name: "index_recipes_on_member_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "members"
@@ -112,4 +123,5 @@ ActiveRecord::Schema.define(version: 2023_06_08_075758) do
   add_foreign_key "favorites", "members"
   add_foreign_key "favorites", "posts"
   add_foreign_key "posts", "members"
+  add_foreign_key "recipes", "members"
 end
