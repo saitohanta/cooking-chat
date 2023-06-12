@@ -11,14 +11,19 @@ devise_scope :member do
 
 root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
+  get "search" => "searches#search" #検索用
   scope module: :public do
     resources :members, only:[:index, :show, :edit, :update]
     resources :bookmarks, only:[:index, :create, :destroy]
     resources :recipes, :posts do
+      collection do
+        get 'search'
+      end
       resource :favorites, only:[:create, :destroy]
       resources :comments, only:[:create, :destroy]
     end
   end
+
 
 
 # 管理者側

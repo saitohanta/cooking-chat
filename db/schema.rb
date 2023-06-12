@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_12_005320) do
+ActiveRecord::Schema.define(version: 2023_06_12_111446) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,8 +67,10 @@ ActiveRecord::Schema.define(version: 2023_06_12_005320) do
     t.integer "member_id", null: false
     t.integer "post_id", null: false
     t.text "content", null: false
+    t.integer "recipe_id"
     t.index ["member_id"], name: "index_comments_on_member_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["recipe_id"], name: "index_comments_on_recipe_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -76,8 +78,10 @@ ActiveRecord::Schema.define(version: 2023_06_12_005320) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "member_id", null: false
     t.integer "post_id", null: false
+    t.integer "recipe_id"
     t.index ["member_id"], name: "index_favorites_on_member_id"
     t.index ["post_id"], name: "index_favorites_on_post_id"
+    t.index ["recipe_id"], name: "index_favorites_on_recipe_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -120,8 +124,10 @@ ActiveRecord::Schema.define(version: 2023_06_12_005320) do
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "comments", "members"
   add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "recipes"
   add_foreign_key "favorites", "members"
   add_foreign_key "favorites", "posts"
+  add_foreign_key "favorites", "recipes"
   add_foreign_key "posts", "members"
   add_foreign_key "recipes", "members"
 end

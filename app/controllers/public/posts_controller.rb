@@ -43,6 +43,11 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    @posts = Post.search(params[:keyword])
+    @recipes = Recipe.search(params[:keyword])
+  end
+
   private
 
   def post_params
