@@ -17,6 +17,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @recipes = Recipe.all
   end
 
   def show

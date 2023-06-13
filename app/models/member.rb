@@ -10,6 +10,8 @@ class Member < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarks_posts, through: :bookmarks, source: :post
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -24,6 +26,22 @@ class Member < ApplicationRecord
       member.password = SecureRandom.urlsafe_base64
       member.name = 'Guest'
     end
+  end
+
+  def own?(object)
+    id == object.member_id
+  end
+
+  def bookmark(post)
+    bookmarks_posts << post
+  end
+
+  def unbookmark(post)
+    bookmarks_posts.delete(post)
+  end
+
+  def bookmark?(post)
+    bookmarks_posts.include?(post)
   end
 
 end

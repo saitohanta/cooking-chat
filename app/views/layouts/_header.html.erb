@@ -1,37 +1,37 @@
 <% if admin_signed_in? %>
-  <li>
+  <li class="nav-item">
     <%= link_to "会員一覧", admin_members_path %>
   </li>
-  <li>
+  <li class="nav-item">
     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
   </li>
 <% elsif member_signed_in? %>
-  <li>
+  <li class="nav-item">
     <%= link_to "新規投稿", new_post_path %>
   </li>
-  <li>
+  <li class="nav-item">
     <%= link_to "レシピ投稿", new_recipe_path %>
   </li>
-  <li>
+  <li class="nav-item">
     <%= link_to "マイページ", member_path(current_member) %>
   </li>
-  <li>
+  <li class="nav-item">
     <%= link_to "ブックマーク", bookmarks_path %>
   </li>
-  <li>
+  <li class="nav-item">
     <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
   </li>
 <% else %>
-  <li>
+  <li class="nav-item">
     <%= link_to "About", about_path %>
   </li>
-  <li>
+  <li class="nav-item">
     <%= link_to "新規登録", new_member_registration_path %>
   </li>
-  <li>
+  <li class="nav-item">
     <%= link_to "ログイン", new_member_session_path %>
   </li>
-  <li>
+  <li class="nav-item">
     <%= link_to "ゲストログイン", members_guest_sign_in_path, method: :post %>
   </li>
 <% end %>

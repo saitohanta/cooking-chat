@@ -11,6 +11,10 @@ class Post < ApplicationRecord
     favorites.exists?(member_id: member.id)
   end
 
+  def bookmarked_by?(member)
+    bookmarks.where(member_id: member).exists?
+  end
+
   def self.search(search)
     return Post.all unless search
     Post.where('title LIKE(?)', "%#{search}%")

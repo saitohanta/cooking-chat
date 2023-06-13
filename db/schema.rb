@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_12_111446) do
+ActiveRecord::Schema.define(version: 2023_06_13_124210) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2023_06_12_111446) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "member_id", null: false
     t.integer "post_id", null: false
+    t.index ["member_id", "post_id"], name: "index_bookmarks_on_member_id_and_post_id", unique: true
     t.index ["member_id"], name: "index_bookmarks_on_member_id"
     t.index ["post_id"], name: "index_bookmarks_on_post_id"
   end
@@ -67,10 +68,8 @@ ActiveRecord::Schema.define(version: 2023_06_12_111446) do
     t.integer "member_id", null: false
     t.integer "post_id", null: false
     t.text "content", null: false
-    t.integer "recipe_id"
     t.index ["member_id"], name: "index_comments_on_member_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["recipe_id"], name: "index_comments_on_recipe_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -78,10 +77,8 @@ ActiveRecord::Schema.define(version: 2023_06_12_111446) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "member_id", null: false
     t.integer "post_id", null: false
-    t.integer "recipe_id"
     t.index ["member_id"], name: "index_favorites_on_member_id"
     t.index ["post_id"], name: "index_favorites_on_post_id"
-    t.index ["recipe_id"], name: "index_favorites_on_recipe_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -107,6 +104,35 @@ ActiveRecord::Schema.define(version: 2023_06_12_111446) do
     t.index ["member_id"], name: "index_posts_on_member_id"
   end
 
+  create_table "recipe_bookmarks", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id", null: false
+    t.integer "recipe_id", null: false
+    t.index ["member_id", "recipe_id"], name: "index_recipe_bookmarks_on_member_id_and_recipe_id", unique: true
+    t.index ["member_id"], name: "index_recipe_bookmarks_on_member_id"
+    t.index ["recipe_id"], name: "index_recipe_bookmarks_on_recipe_id"
+  end
+
+  create_table "recipe_comments", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id", null: false
+    t.integer "recipe_id", null: false
+    t.text "content", null: false
+    t.index ["member_id"], name: "index_recipe_comments_on_member_id"
+    t.index ["recipe_id"], name: "index_recipe_comments_on_recipe_id"
+  end
+
+  create_table "recipe_favorites", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id", null: false
+    t.integer "recipe_id", null: false
+    t.index ["member_id"], name: "index_recipe_favorites_on_member_id"
+    t.index ["recipe_id"], name: "index_recipe_favorites_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -124,10 +150,14 @@ ActiveRecord::Schema.define(version: 2023_06_12_111446) do
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "comments", "members"
   add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "recipes"
   add_foreign_key "favorites", "members"
   add_foreign_key "favorites", "posts"
-  add_foreign_key "favorites", "recipes"
   add_foreign_key "posts", "members"
+  add_foreign_key "recipe_bookmarks", "members"
+  add_foreign_key "recipe_bookmarks", "recipes"
+  add_foreign_key "recipe_comments", "members"
+  add_foreign_key "recipe_comments", "recipes"
+  add_foreign_key "recipe_favorites", "members"
+  add_foreign_key "recipe_favorites", "recipes"
   add_foreign_key "recipes", "members"
 end
