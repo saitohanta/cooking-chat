@@ -7,6 +7,10 @@ class Recipe < ApplicationRecord
 
   belongs_to :member
 
+  def favorited_by?(member)
+    recipe_favorites.exists?(member_id: member.id)
+  end
+
   def self.search(search)
     return Recipe.all unless search
     Recipe.where('menu_name LIKE(?)', "%#{search}%")

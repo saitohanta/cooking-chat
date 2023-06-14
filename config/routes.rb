@@ -14,7 +14,10 @@ root to: 'public/homes#top'
   scope module: :public do
     resources :members, only:[:index, :show, :edit, :update]
     resources :bookmarks, only:[:index]
-    resources :recipes, only:[:new, :create, :show, :edit, :update, :destroy]
+    resources :recipes, only:[:new, :create, :show, :edit, :update, :destroy] do
+      resource :recipe_favorites, only:[:create, :destroy]
+      resources :recipe_comments, only:[:create, :destroy]
+    end
     resources :posts do
       collection do
         get 'search'

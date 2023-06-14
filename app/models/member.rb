@@ -9,7 +9,9 @@ class Member < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :recipe_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :recipe_favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarks_posts, through: :bookmarks, source: :post
 
