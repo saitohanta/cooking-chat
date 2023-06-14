@@ -11,6 +11,10 @@ class Recipe < ApplicationRecord
     recipe_favorites.exists?(member_id: member.id)
   end
 
+  def bookmarked_by?(member)
+    recipe_bookmarks.where(member_id: member).exists?
+  end
+
   def self.search(search)
     return Recipe.all unless search
     Recipe.where('menu_name LIKE(?)', "%#{search}%")

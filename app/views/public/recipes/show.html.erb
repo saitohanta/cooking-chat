@@ -35,3 +35,5 @@
   <%= f.text_area :content, rows: "2", placeholder: "コメントをここに" %>
   <%= f.submit "送信する" %>
 <% end %>
+
+<%= render "public/recipe_bookmarks/bookmark.button", recipe: @recipe %>

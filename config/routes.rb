@@ -15,8 +15,12 @@ root to: 'public/homes#top'
     resources :members, only:[:index, :show, :edit, :update]
     resources :bookmarks, only:[:index]
     resources :recipes, only:[:new, :create, :show, :edit, :update, :destroy] do
+      collection do
+        get 'recipe_bookmarks'
+      end
       resource :recipe_favorites, only:[:create, :destroy]
       resources :recipe_comments, only:[:create, :destroy]
+      resources :recipe_bookmarks, only:[:create, :destroy]
     end
     resources :posts do
       collection do

@@ -14,6 +14,8 @@ class Member < ApplicationRecord
   has_many :recipe_favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarks_posts, through: :bookmarks, source: :post
+  has_many :recipe_bookmarks, dependent: :destroy
+  has_many :recipe_bookmarks_recipes, through: :recipe_bookmarks, source: :recipe
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -44,6 +46,18 @@ class Member < ApplicationRecord
 
   def bookmark?(post)
     bookmarks_posts.include?(post)
+  end
+
+  def recipe_bookmark(recipe)
+    recipe_bookmarks_recipes << recipe
+  end
+
+  def recipe_unbookmark(recipe)
+    recipe_bookmarks_recipes.delete(recipe)
+  end
+
+  def recipe_bookmark?(recipe)
+    recipe_bookmarks_recipes.include?(recipe)
   end
 
 end
