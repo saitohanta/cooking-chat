@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    #byebug
     @post = Post.find(params[:id])
     @comment = Comment.new
   end
