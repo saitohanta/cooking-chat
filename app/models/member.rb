@@ -17,6 +17,9 @@ class Member < ApplicationRecord
   has_many :recipe_bookmarks, dependent: :destroy
   has_many :recipe_bookmarks_recipes, through: :recipe_bookmarks, source: :recipe
 
+  validates :name, presence: true
+  validates :email, presence: true
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -25,11 +28,17 @@ class Member < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  #ゲストログイン
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
       member.name = 'Guest'
     end
+  end
+
+  #退会処理
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
 
   def own?(object)

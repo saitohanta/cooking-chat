@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    attributes:
+      member:
+        name: 名前
+        email: メールアドレス
+      post:
+        post_image: 画像
+        title: タイトル
+        body: 本文
+      recipe:
+        cooking_image: 画像
+        menu_name: メニュー名
+        count: 人数
+        material: 材料
+        process: 作り方

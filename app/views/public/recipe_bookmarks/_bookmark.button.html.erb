@@ -1,9 +1,9 @@
 <% if current_member.recipe_bookmark?(recipe) %>
-<%= link_to recipe_recipe_bookmark_path(current_member.recipe_bookmarks.find_by(recipe_id: recipe.id)), id: "js-recipe_bookmark-button-for-recipe-#{recipe.id}", method: :delete, remote:true do %>
-  ブック
-<% end%>
+  <%= link_to recipe_recipe_bookmark_path(current_member.recipe_bookmarks.find_by(recipe_id: recipe.id)), id: "js-recipe_bookmark-button-for-recipe-#{recipe.id}", method: :delete, remote:true do %>
+    ブック
+  <% end%>
 <% else %>
-<%= link_to recipe_recipe_bookmarks_path(recipe_id: recipe.id), id: "js-recipe_bookmark-button-for-recipe-#{recipe.id}", method: :post, remote:true do %>
-  ブックマーク
-<% end%>
+  <%= link_to recipe_recipe_bookmarks_path(recipe_id: recipe.id), id: "js-recipe_bookmark-button-for-recipe-#{recipe.id}", method: :post, remote:true do %>
+    ブックマーク
+  <% end%>
 <% end %>

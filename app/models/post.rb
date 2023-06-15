@@ -7,6 +7,10 @@ class Post < ApplicationRecord
 
   belongs_to :member
 
+  validates :title, presence: true
+  validates :body, presence: true
+
+
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end

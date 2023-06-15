@@ -1,3 +1,4 @@
+<%= render "public/members/error_message", member: @member %>
 <%= form_with model: @member, url: member_path(@member) do |f| %>
 <%= f.file_field :profile_image, accept: "image/*" %>
 <%= f.label :名前 %>
@@ -5,4 +6,5 @@
 <%= f.label :メールアドレス %>
 <%= f.text_field :email %>
 <%= f.submit "編集内容を保存" %>
+<%= link_to "退会する", unsubscribe_path %>
 <% end %>

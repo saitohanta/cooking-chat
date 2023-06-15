@@ -7,6 +7,13 @@ class Recipe < ApplicationRecord
 
   belongs_to :member
 
+  validates :cooking_image, presence: true
+  validates :menu_name, presence: true
+  validates :count, presence: true
+  validates :material, presence: true
+  validates :process, presence: true
+
+
   def favorited_by?(member)
     recipe_favorites.exists?(member_id: member.id)
   end

@@ -9,6 +9,12 @@ devise_scope :member do
     post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+  #退会確認画面
+  get '/members/:id/unsubscribe' => 'public/members#unsubscribe', as: 'unsubscribe'
+  #論理削除用のルーティング
+  patch '/members/:id/withdrawal' => 'public/members#withdrawal', as: 'withdrawal'
+
+
 root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
   scope module: :public do

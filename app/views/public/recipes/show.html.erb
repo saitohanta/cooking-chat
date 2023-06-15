@@ -11,18 +11,29 @@
   <%= link_to "削除", recipe_path(@recipe), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
 
+<!--いいね機能-->
 <div id="favorite_btn_<%= @recipe.id %>">
-<%= render "public/recipe_favorites/favorite", recipe: @recipe %>
+  <% if member_signed_in? %>
+    <%= render "public/recipe_favorites/favorite", recipe: @recipe %>
+  <% else %>
+    ️<%= @recipe.recipe_favorites.count %>いいね
+  <% end %>
 </div>
 
-コメント件数:<span id="comment_count"><%= @recipe.recipe_comments.count %></span>
+<!--コメント機能-->
+コメント数:<span id="comment_count"><%= @recipe.recipe_comments.count %></span>
 <div id="comments">
-<%= render "public/recipe_comments/comment", recipe: @recipe , recipe_comment: @recipe_comment %>
+  <%= render "public/recipe_comments/comment", recipe: @recipe , recipe_comment: @recipe_comment %>
 </div>
 <div id="comment-form">
-  <%= render "public/recipe_comments/form", recipe: @recipe , recipe_comment: @recipe_comment %>
+  <% if member_signed_in? %>
+    <%= render "public/recipe_comments/form", recipe: @recipe , recipe_comment: @recipe_comment %>
+  <% end %>
 </div>
 
+<!--ブックマーク機能-->
 <div id="bookmark_btn_<%= @recipe.id %>">
-<%= render "public/recipe_bookmarks/bookmark.button", recipe: @recipe %>
+  <% if member_signed_in? %>
+    <%= render "public/recipe_bookmarks/bookmark.button", recipe: @recipe %>
+  <% end %>
 </div>

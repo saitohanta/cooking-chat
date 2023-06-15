@@ -11,6 +11,7 @@
   <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
 
+<!--いいね機能-->
 <div id="favorite_btn_<%= @post.id %>">
   <% if member_signed_in? %>
     <%= render "public/favorites/favorite", post: @post %>
@@ -19,14 +20,18 @@
   <% end %>
 </div>
 
-コメント件数:<span id="comment_count"><%= @post.comments.count %></span>
+<!--コメント機能-->
+コメント数:<span id="comment_count"><%= @post.comments.count %></span>
 <div id="comments">
-<%= render "public/comments/comment", post: @post , comment: @comment %>
+  <%= render "public/comments/comment", post: @post , comment: @comment %>
 </div>
 <div id="comment-form">
-  <%= render "public/comments/form", post: @post , comment: @comment %>
+  <% if member_signed_in? %>
+    <%= render "public/comments/form", post: @post , comment: @comment %>
+  <% end %>
 </div>
 
+<!--ブックマーク機能-->
 <div id="bookmark_btn_<%= @post.id %>">
   <% if member_signed_in? %>
     <%= render "public/bookmarks/bookmark.button", post: @post %>

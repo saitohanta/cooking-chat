@@ -24,6 +24,11 @@ class Public::MembersController < ApplicationController
   end
 
   def withdrawal
+    @member = Member.find(params[:id])
+    @member.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行しました"
+    redirect_to root_path
   end
 
   private

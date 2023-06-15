@@ -1,3 +1,4 @@
+<%= render "public/recipes/error_message", recipe: @recipe %>
 <%= form_with model: @recipe, url: recipe_path(@recipe) do |f| %>
 <%= f.label :メニュー名 %>
 <%= f.text_field :menu_name, placeholder: "メニュー名" %>

@@ -1,3 +1,4 @@
+<%= render "public/recipes/error_message", recipe: @recipe %>
 <%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
 <%= f.label :画像 %>
 <%= f.file_field :cooking_image, accept: "image/*" %>

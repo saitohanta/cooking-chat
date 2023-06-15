@@ -1,6 +1,8 @@
 <% @members.each do |member| %>
-<% if member.posts.post_image.attached? %>
-  <%= image_tag member.posts.post_image, size: "50x50" %>
-<% end %>
-  <%= member.post.title %>
+  <% member.posts.each do |post| %>
+    <% if post.post_image.attached? %>
+      <%= image_tag post.post_image, size: "50x50" %>
+    <% end %>
+    <%= post.title %>
+  <% end %>
 <% end %>

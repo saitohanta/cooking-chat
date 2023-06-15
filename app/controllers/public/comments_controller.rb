@@ -1,12 +1,13 @@
 class Public::CommentsController < ApplicationController
   def create
-    post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_id])
     comment = current_member.comments.new(comment_params)
-    comment.post_id = post.id
+    comment.post_id = @post.id
     comment.save
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     Comment.find(params[:id]).destroy
   end
 
