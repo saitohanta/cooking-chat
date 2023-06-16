@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'recipes/show'
+  end
 # 会員側
 devise_for :members,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -49,7 +52,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 namespace :admin do
   resources :posts, only:[:index, :show, :destroy]
   resources :members, only:[:index, :show, :edit, :update]
+  resources :recipes, only:[:show, :destroy]
 end
-get "admin/members/:id/posts" => "admin/members#posts"
+get "admin/members/:id/posts" => "admin/members#posts", as: "admin_member_post"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

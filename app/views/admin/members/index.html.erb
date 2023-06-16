@@ -1,2 +1,10 @@
-<h1>Admin::Members#index</h1>
-<p>Find me in app/views/admin/members/index.html.erb</p>
+<% @members.each_with_index do |member, i| %>
+  <%= i+1 %>
+  <%= link_to member.name,  admin_member_path(member.id) %>
+  <%= member.email %>
+  <% if member.is_deleted == true %>
+    退会
+  <% else %>
+    有効
+  <% end %>
+<% end %>

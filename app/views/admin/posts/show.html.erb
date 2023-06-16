@@ -1,2 +1,11 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<%= image_tag @post.member.profile_image, size: "50x50" %>
+<%= @post.member.name %>
+<%= @post.created_at.strftime('%Y/%m/%d') %>
+<%= @post.title %>
+<% if @post.post_image.attached? %>
+  <%= image_tag @post.post_image, size: "50x50" %>
+<% end %>
+<%= @post.body %>
+️<%= @post.favorites.count %>いいね
+<%= @post.comments.count %>コメント
+<%= link_to "削除", admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>

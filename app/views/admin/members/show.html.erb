@@ -1,2 +1,14 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+会員ID
+<%= @member.id %>
+氏名
+<%= @member.name %>
+メールアドレス
+<%= @member.email %>
+会員ステータス
+<% if @member.is_deleted == true %>
+  退会
+<% else %>
+  有効
+<% end %>
+<%= link_to "編集する", edit_admin_member_path(@member) %>
+<%= link_to "投稿履歴", admin_member_post_path(@member) %>

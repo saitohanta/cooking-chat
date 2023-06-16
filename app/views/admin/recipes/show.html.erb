@@ -1,0 +1,11 @@
+<%= image_tag @recipe.member.profile_image, size: "50x50" %>
+<%= @recipe.member.name %>
+<%= @recipe.created_at.strftime('%Y/%m/%d') %>
+<%= @recipe.menu_name %>
+<%= image_tag @recipe.cooking_image, size: "50x50" %>
+<%= @recipe.count %>人分
+<%= @recipe.material %>
+<%= @recipe.process %>
+️<%= @recipe.recipe_favorites.count %>いいね
+<%= @recipe.recipe_comments.count %>コメント
+<%= link_to "削除", admin_recipe_path(@recipe), method: :delete, "data-confirm" => "本当に削除しますか？" %>
