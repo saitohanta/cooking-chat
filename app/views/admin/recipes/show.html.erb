@@ -6,6 +6,11 @@
 <%= @recipe.count %>人分
 <%= @recipe.material %>
 <%= @recipe.process %>
+
 ️<%= @recipe.recipe_favorites.count %>いいね
-<%= @recipe.recipe_comments.count %>コメント
-<%= link_to "削除", admin_recipe_path(@recipe), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<!--コメント機能-->
+コメント数:<span id="comment_count"><%= @recipe.recipe_comments.count %></span>
+<div id="comments">
+  <%= render "admin/recipe_comments/comment", recipe: @recipe , recipe_comment: @recipe_comment %>
+</div>

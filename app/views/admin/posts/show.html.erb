@@ -6,6 +6,12 @@
   <%= image_tag @post.post_image, size: "50x50" %>
 <% end %>
 <%= @post.body %>
-️<%= @post.favorites.count %>いいね
-<%= @post.comments.count %>コメント
 <%= link_to "削除", admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+️<%= @post.favorites.count %>いいね
+
+<!--コメント機能-->
+コメント数:<span id="comment_count"><%= @post.comments.count %></span>
+<div id="comments">
+<%= render "admin/comments/comment", post: @post , comment: @comment %>
+</div>

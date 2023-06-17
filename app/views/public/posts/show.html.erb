@@ -20,6 +20,13 @@
   <% end %>
 </div>
 
+<!--ブックマーク機能-->
+<div id="bookmark_btn_<%= @post.id %>">
+  <% if member_signed_in? %>
+    <%= render "public/bookmarks/bookmark.button", post: @post %>
+  <% end %>
+</div>
+
 <!--コメント機能-->
 コメント数:<span id="comment_count"><%= @post.comments.count %></span>
 <div id="comments">
@@ -28,12 +35,5 @@
 <div id="comment-form">
   <% if member_signed_in? %>
     <%= render "public/comments/form", post: @post , comment: @comment %>
-  <% end %>
-</div>
-
-<!--ブックマーク機能-->
-<div id="bookmark_btn_<%= @post.id %>">
-  <% if member_signed_in? %>
-    <%= render "public/bookmarks/bookmark.button", post: @post %>
   <% end %>
 </div>

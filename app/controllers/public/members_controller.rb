@@ -20,9 +20,6 @@ class Public::MembersController < ApplicationController
     end
   end
 
-  def unsubscribe
-  end
-
   def withdrawal
     @member = Member.find(params[:id])
     @member.update(is_deleted: true)

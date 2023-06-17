@@ -50,9 +50,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
 namespace :admin do
-  resources :posts, only:[:index, :show, :destroy]
+  resources :posts, only:[:index, :show, :destroy] do
+    resources :comments, only:[:create, :destroy]
+  end
   resources :members, only:[:index, :show, :edit, :update]
-  resources :recipes, only:[:show, :destroy]
+  resources :recipes, only:[:show, :destroy] do
+    resources :recipe_comments, only:[:create, :destroy]
+  end
 end
 get "admin/members/:id/posts" => "admin/members#posts", as: "admin_member_post"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

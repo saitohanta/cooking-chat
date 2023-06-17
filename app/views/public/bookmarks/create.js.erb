@@ -1,1 +1,1 @@
-$('#bookmark_btn_<%= @post.id %>').html("<%= j(render partial: 'public/bookmarks/bookmark.button', locals: {post: @post}) %>");
+$('#bookmark_btn_<%= @post.id %>').html("<%= j(render partial: 'public/bookmarks/bookmark.button', locals: {post: @post, current_member: @member}) %>");
