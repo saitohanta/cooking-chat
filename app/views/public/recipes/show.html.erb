@@ -23,7 +23,7 @@
 <!--ブックマーク機能-->
 <div id="bookmark_btn_<%= @recipe.id %>">
   <% if member_signed_in? %>
-    <%= render "public/recipe_bookmarks/bookmark.button", recipe: @recipe %>
+    <%= render "public/recipe_bookmarks/bookmark_button", recipe: @recipe %>
   <% end %>
 </div>
 

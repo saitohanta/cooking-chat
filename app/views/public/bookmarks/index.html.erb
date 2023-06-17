@@ -1,6 +1,19 @@
-<% @bookmark.each do |bookmark| %>
-  <%= image_tag bookmark.member.profile_image, size: "50x50" %>
-  <%= bookmark.member.name %>
-  <%= bookmark.post.title %>
-  <%= image_tag bookmark.post.post_image, size: "50x50" %>
+<% @posts.each do |post| %>
+  <%= image_tag post.member.profile_image, size: "50x50" %>
+  <%= post.member.name %>
+  <%= link_to post_path(post) do %>
+    <%= post.title %>
+    <% if post.post_image.attached? %>
+      <%= image_tag post.post_image, size: "50x50" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% @recipes.each do |recipe| %>
+  <%= image_tag recipe.member.profile_image, size: "50x50" %>
+  <%= recipe.member.name %>
+  <%= link_to recipe_path(recipe) do %>
+    <%= recipe.menu_name %>
+    <%= image_tag recipe.cooking_image, size: "50x50" %>
+  <% end %>
 <% end %>

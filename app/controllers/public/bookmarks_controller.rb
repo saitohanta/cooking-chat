@@ -1,6 +1,7 @@
 class Public::BookmarksController < ApplicationController
   def index
-    @bookmark = Bookmark.all
+    @posts = current_member.bookmarks_posts
+    @recipes = current_member.recipe_bookmarks_recipes
   end
 
   def create
@@ -10,7 +11,7 @@ class Public::BookmarksController < ApplicationController
   end
 
   def destroy
-    @post = current_member.bookmarks.find(params[:post_id]).post
+    @post = current_member.bookmarks.find_by(post_id: params[:post_id]).post
     current_member.unbookmark(@post)
     @member = current_member
   end

@@ -1,17 +1,21 @@
 <% @members.each do |member| %>
   <% if member == current_member %>
     <% member.posts.each do |post| %>
-      <% if post.post_image.attached? %>
-        <%= image_tag post.post_image, size: "50x50" %>
+      <%= link_to post_path(post) do %>
+        <% if post.post_image.attached? %>
+          <%= image_tag post.post_image, size: "50x50" %>
+        <% end %>
+        <%= post.title %>
       <% end %>
-      <%= post.title %>
       <%= post.created_at.strftime('%Y/%m/%d') %>
       ️<%= post.favorites.count %>いいね
       <%= post.comments.count %>コメント
     <% end %>
     <% member.recipes.each do |recipe| %>
-      <%= image_tag recipe.cooking_image, size: "50x50" %>
-      <%= recipe.menu_name %>
+      <%= link_to recipe_path(recipe) do %>
+        <%= image_tag recipe.cooking_image, size: "50x50" %>
+        <%= recipe.menu_name %>
+      <% end %>
       <%= recipe.created_at.strftime('%Y/%m/%d') %>
       ️<%= recipe.recipe_favorites.count %>いいね
       <%= recipe.recipe_comments.count %>コメント

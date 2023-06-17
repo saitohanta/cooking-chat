@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :members, through: :bookmars
+  
 
   belongs_to :member
 

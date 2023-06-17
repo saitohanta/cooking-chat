@@ -23,7 +23,7 @@
 <!--ブックマーク機能-->
 <div id="bookmark_btn_<%= @post.id %>">
   <% if member_signed_in? %>
-    <%= render "public/bookmarks/bookmark.button", post: @post %>
+    <%= render "public/bookmarks/bookmark_button", post: @post %>
   <% end %>
 </div>
 

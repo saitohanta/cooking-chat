@@ -1,5 +1,5 @@
 <% if current_member.bookmark?(post) %>
-  <%= link_to post_bookmark_path(current_member.bookmarks.find_by(post_id: post.id)), id: "js-bookmark-button-for-post-#{post.id}", method: :delete, remote:true do %>
+  <%= link_to post_bookmark_path(post.id, current_member.bookmarks.find_by(post_id: post.id)), id: "js-bookmark-button-for-post-#{post.id}", method: :delete, remote:true do %>
     ブック
   <% end %>
 <% else %>

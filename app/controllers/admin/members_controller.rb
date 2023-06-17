@@ -21,7 +21,7 @@ class Admin::MembersController < ApplicationController
   end
 
   def posts
-    @members = Member.all
+    @member = Member.find(params[:id])
   end
 
   private
