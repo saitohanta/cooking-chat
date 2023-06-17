@@ -1,2 +1,3 @@
 $('#comments').html("<%= j(render "public/recipe_comments/comment", recipe: @recipe) %>");
 $('#comment_count').html("<%= @recipe.recipe_comments.count %>")
+$('#comment_content').val('')
