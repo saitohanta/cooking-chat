@@ -6,8 +6,8 @@
     <%= post.title %>
     <%= post.member.name %>
   <% end %>
-  ️<%= post.favorites.count %>いいね
-  コメント数<%= post.comments.count %>
+  <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= post.favorites.count %>
+  <i class="fa-solid fa-message" style="color: #787878;"></i><%= post.comments.count %>
 <% end %>
 <% @recipes.each do |recipe| %>
   <%= link_to admin_recipe_path(recipe.id) do %>
@@ -15,6 +15,6 @@
     <%= recipe.menu_name %>
     <%= recipe.member.name %>
   <% end %>
-  ️<%= recipe.recipe_favorites.count %>いいね
-  コメント数<%= recipe.recipe_comments.count %>
+  <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= recipe.recipe_favorites.count %>
+  <i class="fa-solid fa-message" style="color: #787878;"></i><%= recipe.recipe_comments.count %>
 <% end %>

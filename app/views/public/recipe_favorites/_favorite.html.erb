@@ -1,9 +1,9 @@
 <% if recipe.favorited_by?(current_member) %>
-  <%= link_to recipe_recipe_favorites_path(recipe), method: :delete, remote:true do %>
-    <%= recipe.recipe_favorites.count %>いいね
+  <%= link_to recipe_recipe_favorites_path(recipe), method: :delete, remote:true, class:"btn btn-outline-secondary btn-sm" do %>
+    <i class="fa-solid fa-thumbs-up"></i><%= recipe.recipe_favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to recipe_recipe_favorites_path(recipe),method: :post, remote:true do %>
-    <%= recipe.recipe_favorites.count %>いいね
+  <%= link_to recipe_recipe_favorites_path(recipe),method: :post, remote:true, class:"btn btn-outline-secondary btn-sm" do %>
+     <i class="fa-regular fa-thumbs-up"></i><%= recipe.recipe_favorites.count %>
   <% end %>
 <% end %>

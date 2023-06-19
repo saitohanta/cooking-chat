@@ -1,4 +1,4 @@
-<%= image_tag @recipe.member.profile_image, size: "50x50" %>
+<%= image_tag @recipe.member.profile_image, class: "rounded-circle", size: "70x70" %>
 <%= @recipe.member.name %>
 <%= @recipe.created_at.strftime('%Y/%m/%d') %>
 <%= @recipe.menu_name %>

@@ -8,8 +8,8 @@
         <%= post.title %>
       <% end %>
       <%= post.created_at.strftime('%Y/%m/%d') %>
-      ️<%= post.favorites.count %>いいね
-      <%= post.comments.count %>コメント
+      <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= post.favorites.count %>
+      <i class="fa-solid fa-message" style="color: #787878;"></i><%= post.comments.count %>
     <% end %>
     <% member.recipes.each do |recipe| %>
       <%= link_to recipe_path(recipe) do %>
@@ -17,8 +17,8 @@
         <%= recipe.menu_name %>
       <% end %>
       <%= recipe.created_at.strftime('%Y/%m/%d') %>
-      ️<%= recipe.recipe_favorites.count %>いいね
-      <%= recipe.recipe_comments.count %>コメント
+      <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= recipe.recipe_favorites.count %>
+      <i class="fa-solid fa-message" style="color: #787878;"></i><%= recipe.recipe_comments.count %>
     <% end %>
   <% end %>
 <% end %>

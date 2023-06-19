@@ -1,5 +1,21 @@
-<%= image_tag @member.get_profile_image(100,100) %>
-<%= @member.name %>
-<%= @member.email %>
-<%= link_to "編集する", edit_member_path %>
-<%= link_to "投稿履歴", members_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <%= image_tag @member.get_profile_image(100,100), class: "rounded-circle", size: "100x100" %>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-5">
+      <%= "名前" %>
+      <%= @member.name %>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-5">
+      <%= @member.email %>
+    </div>
+    </div>
+    <%= link_to "編集する", edit_member_path, class:"btn btn-success" %>
+    <%= link_to "投稿履歴", members_path, class:"btn btn-warning" %>
+
+</div>

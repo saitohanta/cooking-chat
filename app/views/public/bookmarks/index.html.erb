@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <%= image_tag post.member.profile_image, size: "50x50" %>
+  <%= image_tag post.member.profile_image, class: "rounded-circle", size: "60x60" %>
   <%= post.member.name %>
   <%= link_to post_path(post) do %>
     <%= post.title %>
@@ -10,7 +10,7 @@
 <% end %>
 
 <% @recipes.each do |recipe| %>
-  <%= image_tag recipe.member.profile_image, size: "50x50" %>
+  <%= image_tag recipe.member.profile_image, class: "rounded-circle", size: "60x60" %>
   <%= recipe.member.name %>
   <%= link_to recipe_path(recipe) do %>
     <%= recipe.menu_name %>
