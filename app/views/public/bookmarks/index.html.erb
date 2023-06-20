@@ -1,19 +1,54 @@
-<% @posts.each do |post| %>
-  <%= image_tag post.member.profile_image, class: "rounded-circle", size: "60x60" %>
-  <%= post.member.name %>
-  <%= link_to post_path(post) do %>
-    <%= post.title %>
-    <% if post.post_image.attached? %>
-      <%= image_tag post.post_image, size: "50x50" %>
-    <% end %>
-  <% end %>
-<% end %>
-
-<% @recipes.each do |recipe| %>
-  <%= image_tag recipe.member.profile_image, class: "rounded-circle", size: "60x60" %>
-  <%= recipe.member.name %>
-  <%= link_to recipe_path(recipe) do %>
-    <%= recipe.menu_name %>
-    <%= image_tag recipe.cooking_image, size: "50x50" %>
-  <% end %>
-<% end %>
+<div class="container">
+  <h4>投稿</h4>
+    <div class="texts-wrapper">
+      <div class="contents-title text-center">
+        <div class="row">
+          <% @posts.each do |post| %>
+            <div class="col-md-4">
+              <div class="card mx-auto mb-4" style="width: 17rem;">
+                <div class="card-body text-left">
+                  <%= image_tag post.member.profile_image, class: "rounded-circle", size: "60x60" %>
+                  <span class="card-body ml-3">
+                    <%= post.member.name %>
+                  </span>
+                </div>
+                <%= link_to post_path(post) do %>
+                  <h5 class="card-body text-dark border-top">
+                    <%= post.title %>
+                  </h5>
+                  <% if post.post_image.attached? %>
+                    <%= image_tag post.post_image, size: "270x140" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <h4>レシピ</h4>
+    <div class="texts-wrapper">
+      <div class="contents-title text-center">
+        <div class="row">
+          <% @recipes.each do |recipe| %>
+            <div class="col-md-4">
+              <div class="card mx-auto" style="width: 17rem;">
+                <div class="card-body text-left">
+                  <%= image_tag recipe.member.profile_image, class: "rounded-circle", size: "60x60" %>
+                  <span class="card-body ml-3">
+                    <%= recipe.member.name %>
+                  </span>
+                </div>
+                <%= link_to recipe_path(recipe) do %>
+                  <h5 class="card-body text-dark border-top">
+                    <%= recipe.menu_name %>
+                  </h5>
+                  <%= image_tag recipe.cooking_image, size: "270x140" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
