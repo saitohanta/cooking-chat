@@ -1,55 +1,75 @@
-<div class="card mx-auto" style="width: 30rem;">
+<div class="card mx-auto mt-3" style="width: 30rem;">
   <div class="row">
     <div class="card-body">
-      <%= image_tag @post.member.profile_image, class: "rounded-circle", size: "70x70" %>
-      <%= @post.member.name %>
-      <%= @post.created_at.strftime('%Y/%m/%d') %>
+      <div class="d-flex">
+        <%= image_tag @post.member.profile_image, class: "rounded-circle", size: "70x70" %>
+        <div class="d-flex">
+          <div class="p-1">
+            <div><%= @post.member.name %></div>
+            <div><%= @post.created_at.strftime('%Y/%m/%d') %></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <h4 class="card-title text-center">
     <%= @post.title %>
   </h4>
-  <div class="card-body">
     <% if @post.post_image.attached? %>
-      <%= image_tag @post.post_image, size: "460x270" %>
+      <%= image_tag @post.post_image %>
     <% end %>
-  </div>
   <div class="card-body">
     <%= @post.body %>
   </div>
   <div class="row">
     <div class="card-body">
-      <% if @post.member == current_member %>
-        <%= link_to "編集", edit_post_path, class:"btn btn-success btn-sm" %>
-        <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-sm" %>
-      <% end %>
+      <div class="d-flex">
+        <span class="ml-3">
+          <% if @post.member == current_member %>
+            <%= link_to "編集", edit_post_path, class:"btn btn-success" %>
+            <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %>
+          <% end %>
+        </span>
 
       <!--いいね機能-->
-      <div id="favorite_btn_<%= @post.id %>">
-        <% if member_signed_in? %>
-          <%= render "public/favorites/favorite", post: @post %>
-        <% else %>
-         ️<%= @post.favorites.count %>いいね
-        <% end %>
-      </div>
+      <span class="ml-5">
+        <div id="favorite_btn_<%= @post.id %>">
+          <% if member_signed_in? %>
+            <%= render "public/favorites/favorite", post: @post %>
+          <% else %>
+           ️<%= @post.favorites.count %>いいね
+          <% end %>
+        </div>
+      </span>
 
       <!--ブックマーク機能-->
-      <div id="bookmark_btn_<%= @post.id %>">
-        <% if member_signed_in? %>
-          <%= render "public/bookmarks/bookmark_button", post: @post %>
-        <% end %>
+      <span class="ml-3">
+        <div id="bookmark_btn_<%= @post.id %>">
+          <% if member_signed_in? %>
+            <%= render "public/bookmarks/bookmark_button", post: @post %>
+          <% end %>
+        </div>
+      </span>
+       <span class="ml-5">
+        コメント数:<span id="comment_count"><%= @post.comments.count %></span>
+      </span>
       </div>
     </div>
   </div>
+</div>
 
-  <!--コメント機能-->
-  コメント数:<span id="comment_count"><%= @post.comments.count %></span>
-  <div id="comments">
-    <%= render "public/comments/comment", post: @post , comment: @comment %>
-  </div>
-  <div id="comment_form">
-    <% if member_signed_in? %>
-      <%= render "public/comments/form", post: @post , comment: @comment %>
-    <% end %>
+<!--コメント機能-->
+<div class="card mx-auto" style="width: 30rem;">
+  <div class="row">
+    <div class="card-body">
+      <div id="comments">
+        <%= render "public/comments/comment", post: @post , comment: @comment %>
+      </div>
+      <div id="comment_form">
+        <% if member_signed_in? %>
+          <%= render "public/comments/form", post: @post , comment: @comment %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

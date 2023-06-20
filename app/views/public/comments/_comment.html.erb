@@ -1,8 +1,23 @@
 <% post.comments.each do |comment| %>
-  <%= image_tag comment.member.get_profile_image(50,50) %>
-  <%= comment.member.name %>
-  <%= comment.created_at.strftime("%Y/%m/%d") %><%= comment.content %>
-  <% if comment.member == current_member %>
-    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote:true, data: {"turbolinks" => false} %>
-  <% end %>
+  <div class="border-bottom">
+    <div class="d-flex">
+      <%= image_tag comment.member.get_profile_image(50,50), class: "rounded-circle" %>
+      <div class="d-flex">
+        <div class="p-1">
+          <div>
+            <%= comment.member.name %>
+          </div>
+          <div>
+            <%= comment.created_at.strftime("%Y/%m/%d") %>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div>
+        <%= comment.content %>
+      </div>
+      <% if comment.member == current_member %>
+        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote:true, data: {"turbolinks" => false} %>
+      <% end %>
+  </div>
 <% end %>

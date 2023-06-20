@@ -1,9 +1,9 @@
 <% if current_member.bookmark?(post) %>
-  <%= link_to post_bookmark_path(post.id, current_member.bookmarks.find_by(post_id: post.id)), id: "js-bookmark-button-for-post-#{post.id}", method: :delete, remote:true, class:"btn btn" do %>
+  <%= link_to post_bookmark_path(post.id, current_member.bookmarks.find_by(post_id: post.id)), id: "js-bookmark-button-for-post-#{post.id}", method: :delete, remote:true, class:"btn btn-outline-secondary btn-sm" do %>
     <i class="fa-solid fa-bookmark"></i>
   <% end %>
 <% else %>
-  <%= link_to post_bookmarks_path(post_id: post.id), id: "js-bookmark-button-for-post-#{post.id}", method: :post, remote:true, class:"btn btn" do %>
+  <%= link_to post_bookmarks_path(post_id: post.id), id: "js-bookmark-button-for-post-#{post.id}", method: :post, remote:true, class:"btn btn-outline-secondary btn-sm" do %>
     <i class="fa-regular fa-bookmark"></i>
   <% end %>
 <% end %>

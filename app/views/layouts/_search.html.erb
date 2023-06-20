@@ -1,4 +1,6 @@
+<span class="ml-5">
 <%= form_with url: search_posts_path, local: true, method: :get, class: "search-form" do |f| %>
   <%= f.text_field :keyword, placeholder: "検索する" %>
   <%= f.submit "検索" %>
 <% end %>
+</span>

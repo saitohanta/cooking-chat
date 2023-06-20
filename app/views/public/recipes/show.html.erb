@@ -1,39 +1,81 @@
-<%= image_tag @recipe.member.profile_image, class: "rounded-circle", size: "70x70" %>
-<%= @recipe.member.name %>
-<%= @recipe.created_at.strftime('%Y/%m/%d') %>
-<%= @recipe.menu_name %>
-<%= image_tag @recipe.cooking_image, size: "50x50" %>
-<%= @recipe.count %>人分
-<%= @recipe.material %>
-<%= @recipe.process %>
-<% if @recipe.member == current_member %>
-  <%= link_to "編集", edit_recipe_path %>
-  <%= link_to "削除", recipe_path(@recipe), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %>
+<div class="card mx-auto mt-3" style="width: 30rem;">
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <%= image_tag @recipe.member.profile_image, class: "rounded-circle", size: "70x70" %>
+        <div class="d-flex">
+          <div class="p-1">
+            <div><%= @recipe.member.name %></div>
+            <div><%= @recipe.created_at.strftime('%Y/%m/%d') %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4 class="card-title text-center">
+    <%= @recipe.menu_name %>
+  </h4>
+  <%= image_tag @recipe.cooking_image %>
+  <div class="card-body">
+    <%= @recipe.count %>人分
+  </div>
+  <div class="card-body border-bottom">
+    <h5>材料</h5>
+    <%= @recipe.material %>
+  </div>
+  <div class="card-body">
+    <h5>作り方</h5>
+    <%= @recipe.process %>
+  </div>
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <span class="ml-3">
+          <% if @recipe.member == current_member %>
+            <%= link_to "編集", edit_recipe_path, class:"btn btn-success" %>
+            <%= link_to "削除", recipe_path(@recipe), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %>
+          <% end %>
+        </span>
 
-<!--いいね機能-->
-<div id="favorite_btn_<%= @recipe.id %>">
-  <% if member_signed_in? %>
-    <%= render "public/recipe_favorites/favorite", recipe: @recipe %>
-  <% else %>
-    ️<%= @recipe.recipe_favorites.count %>いいね
-  <% end %>
-</div>
+        <!--いいね機能-->
+        <span class="ml-5">
+          <div id="favorite_btn_<%= @recipe.id %>">
+            <% if member_signed_in? %>
+              <%= render "public/recipe_favorites/favorite", recipe: @recipe %>
+            <% else %>
+              ️<%= @recipe.recipe_favorites.count %>いいね
+            <% end %>
+          </div>
+        </span>
 
-<!--ブックマーク機能-->
-<div id="bookmark_btn_<%= @recipe.id %>">
-  <% if member_signed_in? %>
-    <%= render "public/recipe_bookmarks/bookmark_button", recipe: @recipe %>
-  <% end %>
+        <!--ブックマーク機能-->
+        <span class="ml-3">
+          <div id="bookmark_btn_<%= @recipe.id %>">
+            <% if member_signed_in? %>
+              <%= render "public/recipe_bookmarks/bookmark_button", recipe: @recipe %>
+            <% end %>
+          </div>
+        </span>
+        <span class="ml-5">
+          コメント数:<span id="comment_count"><%= @recipe.recipe_comments.count %></span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--コメント機能-->
-コメント数:<span id="comment_count"><%= @recipe.recipe_comments.count %></span>
-<div id="comments">
-  <%= render "public/recipe_comments/comment", recipe: @recipe , recipe_comment: @recipe_comment %>
-</div>
-<div id="comment-form">
-  <% if member_signed_in? %>
-    <%= render "public/recipe_comments/form", recipe: @recipe , recipe_comment: @recipe_comment %>
-  <% end %>
+<div class="card mx-auto" style="width: 30rem;">
+  <div class="row">
+    <div class="card-body">
+      <div id="comments">
+        <%= render "public/recipe_comments/comment", recipe: @recipe , recipe_comment: @recipe_comment %>
+      </div>
+      <div id="comment-form">
+        <% if member_signed_in? %>
+          <%= render "public/recipe_comments/form", recipe: @recipe , recipe_comment: @recipe_comment %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

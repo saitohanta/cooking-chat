@@ -1,21 +1,56 @@
-<% @member.posts.each do |post| %>
-  <%= link_to admin_post_path(post) do %>
-    <% if post.post_image.attached? %>
-      <%= image_tag post.post_image, size: "50x50" %>
-    <% end %>
-    <%= post.title %>
-  <% end %>
-  <%= post.created_at.strftime('%Y/%m/%d') %>
-  <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= post.favorites.count %>
-  <i class="fa-solid fa-message" style="color: #787878;"></i><%= post.comments.count %>
-<% end %>
-
-<% @member.recipes.each do |recipe| %>
-  <%= link_to admin_recipe_path(recipe) do %>
-    <%= image_tag recipe.cooking_image, size: "50x50" %>
-    <%= recipe.menu_name %>
-  <% end %>
-  <%= recipe.created_at.strftime('%Y/%m/%d') %>
-  <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= recipe.recipe_favorites.count %>
-  <i class="fa-solid fa-message" style="color: #787878;"></i><%= recipe.recipe_comments.count %>
-<% end %>
+<div class="container">
+  <h4>投稿</h4>
+    <div class="texts-wrapper">
+      <div class="contents-title text-center">
+        <div class="row">
+          <% @member.posts.each do |post| %>
+            <div class="col-12 col-md-6 col-lg-4 ">
+              <div class="card mb-4" style="width: 18rem;">
+                <%= link_to admin_post_path(post) do %>
+                  <% if post.post_image.attached? %>
+                    <%= image_tag post.post_image, size: "285x130" %>
+                  <% end %>
+                  <h5 class="card-body text-dark">
+                    <%= post.title %>
+                  </h5>
+                <% end %>
+                <div class="card-body">
+                  <%= post.created_at.strftime('%Y/%m/%d') %>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= post.favorites.count %>
+                  <i class="ml-3 fa-solid fa-message" style="color: #787878;"></i><%= post.comments.count %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <h4>レシピ</h4>
+    <div class="texts-wrapper">
+      <div class="contents-title text-center">
+        <div class="row">
+          <% @member.recipes.each do |recipe| %>
+            <div class="col-12 col-md-6 col-lg-4 ">
+              <div class="card" style="width: 18rem;">
+                <%= link_to admin_recipe_path(recipe) do %>
+                  <%= image_tag recipe.cooking_image, size: "285x130" %>
+                  <h5 class="card-body text-dark">
+                    <%= recipe.menu_name %>
+                  </h5>
+                <% end %>
+                <div class="card-body">
+                  <%= recipe.created_at.strftime('%Y/%m/%d') %>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= recipe.recipe_favorites.count %>
+                  <i class="ml-3 fa-solid fa-message" style="color: #787878;"></i><%= recipe.recipe_comments.count %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
