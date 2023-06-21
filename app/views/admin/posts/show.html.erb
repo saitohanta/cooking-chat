@@ -1,32 +1,50 @@
-<div class="card mx-auto" style="width: 30rem;">
+<div class="card mx-auto mt-3" style="width: 30rem;">
   <div class="row">
     <div class="card-body">
-      <%= image_tag @post.member.profile_image, class: "rounded-circle", size: "70x70" %>
-      <%= @post.member.name %>
-      <%= @post.created_at.strftime('%Y/%m/%d') %>
+      <div class="d-flex">
+        <%= image_tag @post.member.profile_image, class: "rounded-circle", size: "70x70" %>
+        <div class="d-flex">
+          <div class="p-1">
+            <div><%= @post.member.name %></div>
+            <div><%= @post.created_at.strftime('%Y/%m/%d') %></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <h4 class="card-title text-center">
     <%= @post.title %>
   </h4>
-  <div class="card-body">
     <% if @post.post_image.attached? %>
-      <%= image_tag @post.post_image, size: "460x270" %>
+      <%= image_tag @post.post_image %>
     <% end %>
-  </div>
   <div class="card-body">
     <%= @post.body %>
   </div>
   <div class="row">
     <div class="card-body">
-<%= link_to "削除", admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <div class="d-flex">
+        <span class="ml-3">
+          <%= link_to "削除", admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %>
+        </span>
+        <span class="ml-4">
+          <i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= @post.favorites.count %>
+        </span>
+        <span class="ml-4">
+          コメント数:<span id="comment_count"><%= @post.comments.count %></span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
-
-<i class="fa-regular fa-thumbs-up" style="color: #787878;"></i>️<%= @post.favorites.count %>
 
 <!--コメント機能-->
-コメント数:<span id="comment_count"><%= @post.comments.count %></span>
-<div id="comments">
-<%= render "admin/comments/comment", post: @post , comment: @comment %>
-</div>
+<div class="card mx-auto" style="width: 30rem;">
+  <div class="row">
+    <div class="card-body">
+      <div id="comments">
+        <%= render "admin/comments/comment", post: @post , comment: @comment %>
+      </div>
+    </div>
+  </div>
 </div>

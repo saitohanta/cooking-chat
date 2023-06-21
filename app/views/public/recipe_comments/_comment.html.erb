@@ -17,7 +17,7 @@
         <%= comment.content %>
       </div>
       <% if comment.member == current_member %>
-        <%= link_to "削除", recipe_recipe_comment_path(comment.recipe, comment), method: :delete, remote:true, data: {"turbolinks" => false} %>
+        <%= link_to "削除", recipe_recipe_comment_path(comment.recipe, comment), method: :delete, remote:true, data: {"turbolinks" => false}, class:"btn btn-danger btn-sm" %>
       <% end %>
   </div>
 <% end %>

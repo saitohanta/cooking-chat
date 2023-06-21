@@ -1,6 +1,21 @@
 <% post.comments.each do |comment| %>
-  <%= image_tag comment.member.get_profile_image(50,50) %>
-  <%= comment.member.name %>
-  <%= comment.created_at.strftime("%Y/%m/%d") %><%= comment.content %>
-  <%= link_to "削除", admin_post_comment_path(comment.post, comment), method: :delete, remote:true, data: {"turbolinks" => false} %>
+  <div class="border-bottom">
+    <div class="d-flex">
+      <%= image_tag comment.member.get_profile_image(50,50), class: "rounded-circle" %>
+      <div class="d-flex">
+        <div class="p-1">
+          <div>
+            <%= comment.member.name %>
+          </div>
+          <div>
+            <%= comment.created_at.strftime("%Y/%m/%d") %>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div>
+        <%= comment.content %>
+      </div>
+      <%= link_to "削除", admin_post_comment_path(comment.post, comment), method: :delete, remote:true, data: {"turbolinks" => false}, class:"btn btn-danger btn-sm" %>
+  </div>
 <% end %>
