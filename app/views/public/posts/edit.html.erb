@@ -1,10 +1,30 @@
-<%= render "public/posts/error_message", post: @post %>
-<%= form_with model: @post, url: post_path(@post) do |f| %>
-<%= f.label :タイトル %>
-<%= f.text_field :title, placeholder: "タイトル" %>
-<%= f.label :画像 %>
-<%= f.file_field :post_image, accept: "image/*" %>
-<%= f.label :本文 %>
-<%= f.text_area :body, placeholder: "本文" %>
-<%= f.submit "編集内容を保存", class:"btn btn-success" %>
-<% end %>
+<div class="container">
+  <%= render "public/posts/error_message", post: @post %>
+  <%= form_with model: @post, url: post_path(@post) do |f| %>
+    <div class="field text-center">
+      <span class="ml-5">
+        <%= f.label :タイトル, style: "width: 200px; padding-right: 130px; margin-top: 100px; margin-bottom: 40px;" %>
+      </span>
+      <span class="ml-5">
+      <%= f.text_field :title, placeholder: "タイトル" %>
+      </span>
+    </div>
+    <div class="field text-center">
+      <span class="ml-5">
+        <%= f.label :画像, style: "width: 350px; margin-bottom: 30px" %>
+      </span>
+      <span class="ml-5">
+      <%= f.file_field :post_image, accept: "image/*" %>
+      </span>
+    </div>
+    <div class="field text-center">
+      <span class="ml-5">
+        <%= f.label :本文, style: "width: 290px; padding-right: 60px;" %>
+      </span>
+      <span class="ml-5">
+      <%= f.text_area :body, placeholder: "本文", size: " 30 x 5 " %>
+      </span>
+    </div>
+    <%= f.submit "編集内容を保存", class:"btn btn-success", style: "margin-top: 20px; margin-left: 610px;" %>
+  <% end %>
+</div>

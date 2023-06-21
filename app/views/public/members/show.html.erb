@@ -1,21 +1,19 @@
 <div class="container">
-  <div class="row">
-    <div class="col-5">
-      <%= image_tag @member.get_profile_image(100,100), class: "rounded-circle", size: "100x100" %>
-    </div>
+  <div class="text-center", style="margin-top: 100px;">
+    <%= image_tag @member.get_profile_image(100,100), class: "rounded-circle", size: "100x100" %>
   </div>
-    <div class="row">
-    <div class="col-5">
-      <%= "名前" %>
-      <%= @member.name %>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-5">
-      <%= @member.email %>
-    </div>
-    </div>
+  <div class="text-center", style="margin-top: 30px;">
+    <%= "名前" %>
+    :
+    <%= @member.name %>
+  </div>
+  <div class="text-center", style="margin-top: 30px;">
+    <%= "メールアドレス" %>
+    :
+    <%= @member.email %>
+  </div>
+  <div class="text-center", style="margin-top: 30px;">
     <%= link_to "編集する", edit_member_path, class:"btn btn-success" %>
     <%= link_to "投稿履歴", members_path, class:"btn btn-warning" %>
-
+  </div>
 </div>

@@ -1,5 +1,10 @@
-本当に退会しますか？<br>
-退会する場合は、「退会する」をクリックしてください。
-
-<%= link_to "退会しない", member_path(current_member), class:"btn btn-primary" %>
-<%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class:"btn btn-danger" %>
+<div class="text-center" style="margin: 80px;">
+  本当に退会しますか？<br>
+  退会する場合は、「退会する」をクリックしてください。
+</div>
+<div class="text-center">
+  <span style="padding-right: 30px;">
+    <%= link_to "退会しない", member_path(current_member), class:"btn btn-primary" %>
+  </span>
+  <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class:"btn btn-danger" %>
+</div>

@@ -1,14 +1,36 @@
-会員ID
-<%= @member.id %>
-氏名
-<%= @member.name %>
-メールアドレス
-<%= @member.email %>
-会員ステータス
-<% if @member.is_deleted == true %>
-  退会
-<% else %>
-  有効
-<% end %>
-<%= link_to "編集する", edit_admin_member_path(@member) %>
-<%= link_to "投稿履歴", admin_member_post_path(@member) %>
+<div class="container">
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th scope="row">会員ID</th>
+            <td><%= @member.id %></td>
+          </tr>
+          <tr>
+            <th scope="row">氏名</th>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">メールアドレス</th>
+            <td><%= @member.email %></td>
+          </tr>
+          <tr>
+            <th scope="row">会員ステータス</th>
+            <td>
+              <% if @member.is_deleted == true %>
+                退会
+              <% else %>
+                有効
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ml-5">
+        <%= link_to "編集する", edit_admin_member_path(@member), class:"btn btn-success" %>
+        <%= link_to "投稿履歴", admin_member_post_path(@member), class:"btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+</div>

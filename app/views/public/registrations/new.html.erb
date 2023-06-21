@@ -26,7 +26,7 @@
         <%= f.label :メールアドレス, style: "width: 170px;" %>
       </span>
       <span class="ml-5">
-        <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス" %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", size: 30 %>
       </span>
     </div>
 
@@ -52,7 +52,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "新規登録", class: "hoge", style: "margin-left: 270px;" %>
+      <%= f.submit "新規登録", class:"btn btn-primary", style: "margin-top: 20px; margin-left: 270px;" %>
     </div>
   <% end %>
 

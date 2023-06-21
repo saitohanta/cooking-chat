@@ -1,10 +1,26 @@
-<% @members.each_with_index do |member, i| %>
-  <%= i+1 %>
-  <%= link_to member.name,  admin_member_path(member.id) %>
-  <%= member.email %>
-  <% if member.is_deleted == true %>
-    退会
-  <% else %>
-    有効
+<table class="table">
+  <thead class="table-secondary">
+    <tr class="text-center">
+      <th scope="col">会員ID</th>
+      <th scope="col">氏名</th>
+      <th scope="col">メールアドレス</th>
+      <th scope="col">ステータス</th>
+    </tr>
+  </thead>
+  <% @members.each_with_index do |member, i| %>
+    <tbody>
+      <tr class="text-center">
+        <th scope="row"><%= i+1 %></th>
+        <td><%= link_to member.name,  admin_member_path(member.id) %></td>
+        <td><%= member.email %></td>
+        <td>
+          <% if member.is_deleted == true %>
+            退会
+          <% else %>
+            有効
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
   <% end %>
-<% end %>
+</table>

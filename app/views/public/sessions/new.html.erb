@@ -1,30 +1,42 @@
-<h2>ログイン</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h2>ログイン</h2>
+    </div>
+  </div>
 <div class='login-flash-message'>
   <%= flash[:notice] %>
   <%= flash[:alert] %>
 </div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <span class="ml-5">
+    <%= f.label :メールアドレス, style: "width: 170px;" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 30 %>
+    </span>
   </div>
 
   <div class="field">
-    <%= f.label :パスワード %>
+    <span class="ml-5">
+    <%= f.label :パスワード, style: "width: 170px;" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
+    </span>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
+      <span class="ml-5">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
+      </span>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <%= f.submit "ログイン", class:"btn btn-primary", style: "margin-left: 220px; margin-bottom: 30px;" %>
   </div>
 <% end %>
 
 <h5>会員登録がお済みでない方</h5>
 <%= render "public/shared/links" %>から新規登録を行なってください。
+</div>
