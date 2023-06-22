@@ -10,8 +10,8 @@
   <% @members.each_with_index do |member, i| %>
     <tbody>
       <tr class="text-center">
-        <th scope="row"><%= i+1 %></th>
-        <td><%= link_to member.name,  admin_member_path(member.id) %></td>
+        <td scope="row"><%= i+1 %></td>
+        <td><%= link_to member.name,  admin_member_path(member.id), class:"text-dark" %></td>
         <td><%= member.email %></td>
         <td>
           <% if member.is_deleted == true %>

@@ -1,7 +1,13 @@
-<h1>Cooking Chat</h1>
+<div calss="top">
+  <%= image_tag "top", size: "1515x500" %>
+  <p>Cooking Chat</p>
+</div>
 
-Cooking Chatは料理に関する<br>
-投稿ができるコミュニティサイトです。
+<div class="text-center mt-5", style="font-size:30px;">
+  Cooking Chatは料理に関する<br>
+  投稿ができるコミュニティサイトです。
+</div>
 
-<%= link_to "投稿一覧", posts_path %>
-
+<div class="text-center mt-4">
+  <%= link_to "投稿一覧", posts_path, class:"btn btn-warning" %>
+</div>

@@ -19,7 +19,7 @@
       <%= image_tag @post.post_image %>
     <% end %>
   <div class="card-body">
-    <%= @post.body %>
+    <%=safe_join(@post.body.split("\n"),tag(:br))%>
   </div>
   <div class="row">
     <div class="card-body">

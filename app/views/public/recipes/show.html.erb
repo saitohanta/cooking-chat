@@ -21,11 +21,11 @@
   </div>
   <div class="card-body border-bottom">
     <h5>材料</h5>
-    <%= @recipe.material %>
+    <%=safe_join(@recipe.material.split("\n"),tag(:br))%>
   </div>
   <div class="card-body">
     <h5>作り方</h5>
-    <%= @recipe.process %>
+    <%=safe_join(@recipe.process.split("\n"),tag(:br))%>
   </div>
   <div class="row">
     <div class="card-body">
