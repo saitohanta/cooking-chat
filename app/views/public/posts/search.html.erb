@@ -21,7 +21,9 @@
             <h5 class="card-title text-center text-dark">
               <%= post.title %>
             </h5>
-            <%= image_tag post.post_image, size: "286x200" %>
+            <% if post.post_image.attached? %>
+              <%= image_tag post.post_image, size: "286x200" %>
+            <% end %>
           <% end %>
         </div>
       </div>
