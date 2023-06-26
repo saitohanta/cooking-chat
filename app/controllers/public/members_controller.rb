@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:edit]
 
   def index
     @members = Member.all
@@ -34,6 +35,13 @@ class Public::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:profile_image, :name, :email)
+  end
+
+  def ensure_guest_member
+    @member = Member.find(params[:id])
+    if @member.email == "guest@example.com"
+      redirect_to member_path(current_member)
+    end
   end
 
 end

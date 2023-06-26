@@ -22,6 +22,7 @@
 
 ## 設計書
 * https://app.diagrams.net/#G1ilhXDDcsjRCV9Ej5mBW0Vo5dGeGnch0I
+* https://docs.google.com/spreadsheets/d/1N8lBpG9vDvT-mGrMzi0nNG4G6U05RnIxZ7VYJ8Qc3iE/edit#gid=0
 
 ## 開発環境
 - OS：Linux(CentOS)

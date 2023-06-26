@@ -13,7 +13,9 @@
     <%= @member.email %>
   </div>
   <div class="text-center", style="margin-top: 30px;">
-    <%= link_to "編集する", edit_member_path, class:"btn btn-success" %>
+    <% if @member.email != "guest@example.com" %>
+      <%= link_to "編集する", edit_member_path, class:"btn btn-success" %>
+    <% end %>
     <%= link_to "投稿履歴", members_path, class:"btn btn-warning" %>
   </div>
 </div>
