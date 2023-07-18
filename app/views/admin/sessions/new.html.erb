@@ -1,37 +1,35 @@
 <div class="container">
-  <div class="row">
-    <div class="col-5">
-      <h2>管理者ログイン</h2>
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">管理者ログイン</h5>
+      <div class="form-body p-4">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" %>
+            </div>
+          </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "ログイン", class:"btn btn-block btn-primary" %>
+          </div>
+        <% end %>
+
+        <%= render "admin/shared/links" %>
+      </div>
     </div>
   </div>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <span class="ml-5">
-      <%= f.label :メールアドレス, style: "width: 170px;" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </span>
-  </div>
-
-  <div class="field">
-    <span class="ml-5">
-      <%= f.label :パスワード, style: "width: 170px;" %>
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </span>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <span class="ml-5">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </span>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン", class:"btn btn-primary", style: "margin-left: 220px; margin-bottom: 30px;" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
 </div>
