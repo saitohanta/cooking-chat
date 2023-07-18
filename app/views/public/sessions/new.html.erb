@@ -1,42 +1,40 @@
 <div class="container">
-  <div class="row">
-    <div class="col-5">
-      <h2>ログイン</h2>
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">ログイン</h5>
+      <div class="form-body p-4">
+        <div class='login-flash-message'>
+          <%= flash[:notice] %>
+          <%= flash[:alert] %>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 30, placeholder:"メールアドレス" %>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" %>
+            </div>
+          </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="actions mb-3">
+            <%= f.submit "ログイン", class:"btn btn-block btn-primary" %>
+          </div>
+        <% end %>
+
+        <h5>会員登録がお済みでない方</h5>
+        <%= render "public/shared/links" %>から新規登録を行なってください。
+      </div>
     </div>
   </div>
-<div class='login-flash-message'>
-  <%= flash[:notice] %>
-  <%= flash[:alert] %>
-</div>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <span class="ml-5">
-    <%= f.label :メールアドレス, style: "width: 170px;" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 30 %>
-    </span>
-  </div>
-
-  <div class="field">
-    <span class="ml-5">
-    <%= f.label :パスワード, style: "width: 170px;" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-    </span>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <span class="ml-5">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-      </span>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン", class:"btn btn-primary", style: "margin-left: 220px; margin-bottom: 30px;" %>
-  </div>
-<% end %>
-
-<h5>会員登録がお済みでない方</h5>
-<%= render "public/shared/links" %>から新規登録を行なってください。
 </div>

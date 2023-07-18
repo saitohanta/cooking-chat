@@ -1,61 +1,42 @@
 <div class="container">
-  <div class="row">
-    <div class="col-5">
-      <h2>新規会員登録</h2>
-    </div>
-  </div>
-  <div class='login-flash-message'>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
-  </div>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
-
-    <div class="field">
-      <span class="ml-5">
-        <%= f.label :名前, style: "width: 170px;" %>
-      </span>
-      <span class="ml-5">
-        <%= f.text_field :name, autofocus: true, placeholder: "名前" %>
-      </span>
-    </div>
-
-
-    <div class="field">
-      <span class="ml-5">
-        <%= f.label :メールアドレス, style: "width: 170px;" %>
-      </span>
-      <span class="ml-5">
-        <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", size: 30 %>
-      </span>
-    </div>
-
-    <div class="field">
-      <span class="ml-5">
-        <%= f.label :パスワード %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上)</em>
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">新規会員登録</h5>
+      <div class="form-body p-4">
+        <div class='login-flash-message'>
+          <%= flash[:notice] %>
+          <%= flash[:alert] %>
+        </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= f.text_field :name, autofocus: true, placeholder: "名前" %>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", size: 30 %>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)" %>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)" %>
+            </div>
+          </div>
+          <div class="actions mb-3">
+            <%= f.submit "新規登録", class:"btn btn-primary btn-block" %>
+          </div>
         <% end %>
-      </span>
-      <span class="ml-5">
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </span>
-    </div>
 
-    <div class="field">
-      <span class="ml-5">
-        <%= f.label :パスワード（確認用）, style: "width: 170px;" %>
-      </span>
-      <span class="ml-5">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </span>
+        <h5>会員登録がお済みでない方</h5>
+        <%= render "public/shared/links" %>からログインしてください。
+      </div>
     </div>
-
-    <div class="actions">
-      <%= f.submit "新規登録", class:"btn btn-primary", style: "margin-top: 20px; margin-left: 270px;" %>
-    </div>
-  <% end %>
-
-  <h5>会員登録がお済みでない方</h5>
-  <%= render "public/shared/links" %>からログインしてください。
+  </div>
 </div>
